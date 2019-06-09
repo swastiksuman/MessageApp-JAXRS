@@ -12,13 +12,13 @@ public class MessageService {
 	
 	private Map<Long, Message> messages = MessageDAO.getMessages();
 	
-	MessageService(){
+	public MessageService(){
 		Message m1 = new Message(1L, "Test", new Date(), "Test");
-		Message m2 = new Message(1L, "Test", new Date(), "Test");
-		Message m3 = new Message(1L, "Test", new Date(), "Test");
-		List<Message> list = new ArrayList<Message>();
-		list.add(m1);
-		list.add(m3);
+		Message m2 = new Message(2L, "Test", new Date(), "Test");
+		Message m3 = new Message(3L, "Test", new Date(), "Test");
+		messages.put(1L,m1);
+		messages.put(2L,m2);
+		messages.put(3L,m3);
 	}
 	public List<Message> getAllMessage() {
 		
