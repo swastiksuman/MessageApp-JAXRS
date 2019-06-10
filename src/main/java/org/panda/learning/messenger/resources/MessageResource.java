@@ -37,4 +37,12 @@ public class MessageResource {
 	public Message addMessage(Message message) {
 		return messageService.addMessage(message);
 	}
+
+@POST
+        @Path("/{messageId}")
+	@Produces(MediaType.APPLICATION_XML)
+	public Message deleteMessage(@PathParam("messageId") long messageId ) {
+		return messageService.deleteMessage(messageId);
+	}
+        
 }
