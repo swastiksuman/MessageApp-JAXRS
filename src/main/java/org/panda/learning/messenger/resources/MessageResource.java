@@ -3,6 +3,7 @@ package org.panda.learning.messenger.resources;
 import java.util.List;
 
 import javax.ws.rs.Consumes;
+import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
@@ -15,22 +16,22 @@ import org.panda.learning.messenger.service.MessageService;
 
 @Path("/messages")
 public class MessageResource {
-	
+
 	MessageService messageService = new MessageService();
-	
+
 	@GET
 	@Produces(MediaType.TEXT_XML)
-	public List<Message>  getMessages() {
+	public List<Message> getMessages() {
 		return messageService.getAllMessage();
 	}
-	
+
 	@GET
 	@Path("/{messageId}")
 	@Produces(MediaType.TEXT_XML)
 	public Message getMessageById(@PathParam("messageId") long messageId) {
 		return messageService.getMessage(messageId);
 	}
-	
+
 	@POST
 	@Consumes(MediaType.APPLICATION_XML)
 	@Produces(MediaType.APPLICATION_XML)
@@ -38,11 +39,11 @@ public class MessageResource {
 		return messageService.addMessage(message);
 	}
 
-@POST
-        @Path("/{messageId}")
+	@DELETE
+	@Path("/{messageId}")
 	@Produces(MediaType.APPLICATION_XML)
-	public Message deleteMessage(@PathParam("messageId") long messageId ) {
-		return messageService.deleteMessage(messageId);
+	public Message deleteMessage(@PathParam("messageId") long messageId) {
+		return messageService.removeMessage(messageId);
 	}
-        
+
 }
