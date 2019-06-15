@@ -9,7 +9,7 @@ import org.panda.learning.messenger.model.Profile;
 public class ProfileDAO {
 	private static Map<Long, Profile> profiles = new HashMap<>();
 	
-	public static Map<Long, Profile> getMessages() {
+	public static Map<Long, Profile> getProfiles() {
 		return profiles;
 	}
 }
