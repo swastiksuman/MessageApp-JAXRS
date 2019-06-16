@@ -9,6 +9,7 @@ import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
+import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 
 import org.panda.learning.messenger.model.Message;
@@ -21,8 +22,13 @@ public class MessageResource {
 
 	@GET
 	@Produces(MediaType.TEXT_XML)
-	public List<Message> getMessages() {
-		return messageService.getAllMessage();
+	public List<Message> getMessages(@QueryParam("messageContent") String textSearch) {
+		if(textSearch.isEmpty() || textSearch == null) {
+			return messageService.getAllMessage();
+		}else {
+			return messageService.getFilteredMessage(textSearch);
+		}
+		
 	}
 
 	@GET
